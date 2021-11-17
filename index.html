@@ -3,12 +3,18 @@
     <title>Pronoun Practice Prompts</title> 
     <link href="style.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="data/pronouns.js"></script>  
     <script type="text/javascript">  
+        var numPictures = 28;
+        var numPrompts = 8;
+
         var isMyTurn = false;
+
         $( document ).ready(function() {
             isMyTurn=true;
             finishTurn();
         });
+
         function finishTurn(){
             if (isMyTurn){
                 console.log("turn finished");
@@ -28,7 +34,18 @@
                 $("#myturn").show();
                 $("#finishedturn").hide();
                 $(".block").show();
+
+                $("#pronouns").text(getRandomPronouns(true));
+
                 isMyTurn=true;
+            }
+        }
+
+        function getRandomPronouns(isStatic){
+            if (isStatic){
+                return staticPronouns[Math.floor(Math.random() * staticPronouns.length)];
+            }else{
+                return transitionPronouns[Math.floor(Math.random() * transitionPronouns.length)];
             }
         }
     </script>  
@@ -52,7 +69,7 @@
     <div class="row">
         <div class="block img">
             <img src="imgs/profile00.png">
-            <div class="imginfo">they/them</div>
+            <div class="imginfo" id="pronouns">they/them</div>
         </div>
         <div class="block info">
             <div class="infochunk">
