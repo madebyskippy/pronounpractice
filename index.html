@@ -7,6 +7,8 @@
     <script type="text/javascript" src="data/prompts.js"></script>  
     <script type="text/javascript">  
         var numPictures = 28;
+        var pictureIndecies;
+        var currentPicture = 0;
         var currentPronounIndex = 0;
         var currentPrompt = 0;
         var isStaticPrompt = false;
@@ -17,8 +19,28 @@
         $( document ).ready(function() {
             isMyTurn=true;
             isStaticPrompt=true;
+            pictureIndecies=[];
+            for(var i=0; i<numPictures; i++){
+                pictureIndecies[i]=i;
+            }
+            shuffleArrays();
             finishTurn();
         });
+
+        function shuffleArrays(){
+            shuffleArray(prompts);
+            shuffleArray(staticPronouns);
+            shuffleArray(transitionPronouns);
+            shuffleArray(pictureIndecies);
+        }
+        function shuffleArray(array){
+            for(var i=array.length; i--; i<=0){
+                var temp = array[i];
+                var randomIndex = Math.floor(Math.random() * (i+1));
+                array[i] = array[randomIndex];
+                array[randomIndex] = temp;
+            }
+        }
 
         function finishTurn(){
             if (isMyTurn){
@@ -86,8 +108,9 @@
         function randomizePicture(){
             //maybe make this so it's not as common to repeat a picture.
             //smarter random
-            var index = Math.floor(Math.random()*numPictures);
+            var index = pictureIndecies[currentPicture];
             $("#picture").attr("src","imgs/profile"+index+".png");
+            currentPicture++;
         }
 
         function randomizePrompts(){
