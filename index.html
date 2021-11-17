@@ -6,7 +6,6 @@
     <script type="text/javascript" src="data/pronouns.js"></script>  
     <script type="text/javascript">  
         var numPictures = 28;
-        var numPrompts = 8;
 
         var isMyTurn = false;
 
@@ -35,18 +34,28 @@
                 $("#finishedturn").hide();
                 $(".block").show();
 
-                $("#pronouns").text(getRandomPronouns(true));
+                randomizePronouns(true);
+                randomizePicture();
 
                 isMyTurn=true;
             }
         }
 
-        function getRandomPronouns(isStatic){
+        function randomizePronouns(isStatic){
+            var pronouns = "";
             if (isStatic){
-                return staticPronouns[Math.floor(Math.random() * staticPronouns.length)];
+                pronouns= staticPronouns[Math.floor(Math.random() * staticPronouns.length)];
             }else{
-                return transitionPronouns[Math.floor(Math.random() * transitionPronouns.length)];
+                pronouns= transitionPronouns[Math.floor(Math.random() * transitionPronouns.length)];
             }
+            $("#pronouns").text(pronouns);
+        }
+
+        function randomizePicture(){
+            //maybe make this so it's not as common to repeat a picture.
+            //smarter random
+            var index = Math.floor(Math.random()*numPictures);
+            $("#picture").attr("src","imgs/profile"+index+".png");
         }
     </script>  
 </head>
@@ -68,7 +77,7 @@
     
     <div class="row">
         <div class="block img">
-            <img src="imgs/profile00.png">
+            <img id="picture" src="imgs/profile0.png">
             <div class="imginfo" id="pronouns">they/them</div>
         </div>
         <div class="block info">
