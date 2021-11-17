@@ -6,7 +6,8 @@ var staticPronouns = [
 "he/they",
 "any pronouns"];
 var transitionPronouns = [
-"he/him → she/her",
-"she/her → he/him",
-"she/her → they/them",
-"he/him → they/them"];
+{then:"he/him", now:"she/her"},
+{then:"she/her",now:"he/him"},
+{then:"she/her",now:"they/them"},
+{then:"he/him", now:"they/them"},
+];

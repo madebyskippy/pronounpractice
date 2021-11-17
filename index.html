@@ -4,8 +4,12 @@
     <link href="style.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="data/pronouns.js"></script>  
+    <script type="text/javascript" src="data/prompts.js"></script>  
     <script type="text/javascript">  
         var numPictures = 28;
+        var currentPronounIndex = 0;
+        var currentPrompt = 0;
+        var isStaticPrompt = false;
 
         var isMyTurn = false;
 
@@ -34,7 +38,8 @@
                 $("#finishedturn").hide();
                 $(".block").show();
 
-                randomizePronouns(true);
+                randomizePrompts();
+                randomizePronouns(isStaticPrompt);
                 randomizePicture();
 
                 isMyTurn=true;
@@ -44,9 +49,11 @@
         function randomizePronouns(isStatic){
             var pronouns = "";
             if (isStatic){
-                pronouns= staticPronouns[Math.floor(Math.random() * staticPronouns.length)];
+                currentPronounIndex = Math.floor(Math.random() * staticPronouns.length);
+                pronouns= staticPronouns[currentPronounIndex];
             }else{
-                pronouns= transitionPronouns[Math.floor(Math.random() * transitionPronouns.length)];
+                currentPronounIndex=Math.floor(Math.random() * transitionPronouns.length);
+                pronouns= transitionPronouns[currentPronounIndex].then;
             }
             $("#pronouns").text(pronouns);
         }
@@ -56,6 +63,39 @@
             //smarter random
             var index = Math.floor(Math.random()*numPictures);
             $("#picture").attr("src","imgs/profile"+index+".png");
+        }
+
+        function randomizePrompts(){
+            var currentPrompt = Math.floor(Math.random()*prompts.length);
+            if (prompts[currentPrompt].setting2.length>0){
+                isStaticPrompt=false;
+            }
+
+            $("#setting").text(prompts[currentPrompt].setting1);
+
+            var list = "<ul>";
+            for(var i=0; i<prompts[currentPrompt].details1.length; i++){
+                list += "<li>";
+                list += prompts[currentPrompt].details1[i];
+                list += "</li>";
+            }
+            list += "</ul>";
+
+            $("#details").html(list);
+        }
+
+        function showSecondPartOfPrompt(){            
+            $("#setting").text(prompts[currentPrompt].setting2);
+
+            var list = "<ul>";
+            for(var i=0; i<prompts[currentPrompt].details2.length; i++){
+                list += "<li>";
+                list += prompts[currentPrompt].details2[i];
+                list += "</li>";
+            }
+            list += "</ul>";
+
+            $("#details").html(list);
         }
     </script>  
 </head>
@@ -81,18 +121,13 @@
             <div class="imginfo" id="pronouns">they/them</div>
         </div>
         <div class="block info">
-            <div class="infochunk">
-                You met up with a friend on the weekend!
+            <div class="infochunk" id="setting">
+                Setting
             </div>
             <br>
-            <div class="infochunk">
+            <div class="infochunk" id="details">
                 <ul>
-                    <li>Fostering a dog for the first time</li>
-                    <li>Had a childhood incident with a mean dog</li>
-                    <li>Likes to take the dog to the beach</li>
-                    <li>Bad at training the dog--doesn’t know how to get the dog to stop barking at neighbors</li>
-                    <li>Frustrated that the dog is too active</li>
-                    <li>Dealing with lot of shed dog hairs</li>
+                    <li>Details</li>
                 </ul>
             </div>
 
