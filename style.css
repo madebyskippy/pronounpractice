@@ -55,27 +55,27 @@ img {
     border-radius: 20px;
 }
 
-.block#img{
+.block.img{
     width:30%;
 }
-.block#img img{
+.block.img img{
     width:100%;
 }
 
-#imginfo{
+.imginfo{
     padding: 2%;
     text-align: center;
     background-color: fff;
     border-radius: 15px;
 }
 
-.block#info{
+.block.info{
     width:65%;
     vertical-align:top;
     padding-left:1.5%;
 }
 
-#infochunk{
+.infochunk{
     background-color: fff;
     border-radius: 15px;
     padding:4%;
