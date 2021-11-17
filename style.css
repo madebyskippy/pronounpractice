@@ -1,0 +1,92 @@
+@font-face{
+    font-family: "main";
+    src: url('fonts/Poppins-Regular.ttf');
+}
+@font-face{
+    font-family: "button";
+    src: url('fonts/Poppins-Light.ttf');
+}
+
+body{
+    text-align:center;
+    font-family: main;
+    font-weight: 500;
+    font-size:17px;
+    margin:0;
+    padding:0;
+}
+
+a{
+    color:#999;
+    text-decoration:none;
+}
+a:hover{
+    cursor: pointer;
+    color:#bbb;
+}
+a:active{
+    color:#aaa;
+}
+
+div.header{
+    text-align: center;
+    font-size: 19pt;
+}
+
+.block{
+    display:inline-block;
+}
+
+.row{
+    margin: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width:85%;
+    text-align:left;
+    max-width:1024px;
+    padding: 15px;
+    border-radius: 20px;
+    background-color:#adf;
+}
+
+img {
+    padding:0;
+    margin:0;
+    border-radius: 20px;
+}
+
+.block#img{
+    width:30%;
+}
+.block#img img{
+    width:100%;
+}
+
+#imginfo{
+    padding: 2%;
+    text-align: center;
+    background-color: fff;
+    border-radius: 15px;
+}
+
+.block#info{
+    width:65%;
+    vertical-align:top;
+    padding-left:1.5%;
+}
+
+#infochunk{
+    background-color: fff;
+    border-radius: 15px;
+    padding:4%;
+}
+
+button{
+    font-family: button;
+    font-size:15px;
+    border-width: 2px;
+    border-radius: 10px;
+    border-color: ace;
+    background-color: ace;
+    padding: 15px;
+}

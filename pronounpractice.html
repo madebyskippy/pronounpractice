@@ -1,0 +1,73 @@
+<html>
+<head>
+    <title>Pronoun Practice Prompts</title> 
+    <link href="style.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript">  
+        var isMyTurn = false;
+        function finishTurn(){
+            if (isMyTurn){
+                console.log("turn finished");
+                $("#myturnbutton").prop('disabled',false);
+                $("#finishedturnbutton").prop('disabled',true);
+                $("#myturn").hide();
+                $("#finishedturn").show();
+                $(".block").hide();
+                isMyTurn=false;
+            }
+        }
+        function startTurn(){
+            if (!isMyTurn){
+                console.log("turn starting");
+                $("#myturnbutton").prop('disabled',true);
+                $("#finishedturnbutton").prop('disabled',false);
+                $("#myturn").show();
+                $("#finishedturn").hide();
+                $(".block").show();
+                isMyTurn=true;
+            }
+        }
+    </script>  
+</head>
+<body>
+    <div class="row header">Pronoun Practice Prompts<br>
+    </div>
+
+    <button id="myturnbutton" onclick="startTurn()">It's my turn!</button> &nbsp;
+    <button id="finishedturnbutton" onclick="finishTurn()">I'm finished!</button>
+
+    <div class="row" id="instructions">
+        <span id="myturn">
+            It's your turn! Talk to your conversation partners about the person below.
+        </span>
+        <span id="finishedturn">
+            Great, you finished your turn! Now pass it on.
+        </span>
+    </div>
+    
+    <div class="row">
+        <div class="block" id="img">
+            <img src="imgs/profile00.png">
+            <div id="imginfo">they/them</div>
+        </div>
+        <div class="block" id="info">
+            <div id="infochunk">
+                You met up with a friend on the weekend!
+            </div>
+            <br>
+            <div id="infochunk">
+                <ul>
+                    <li>Fostering a dog for the first time</li>
+                    <li>Had a childhood incident with a mean dog</li>
+                    <li>Likes to take the dog to the beach</li>
+                    <li>Bad at training the dog--doesn’t know how to get the dog to stop barking at neighbors</li>
+                    <li>Frustrated that the dog is too active</li>
+                    <li>Dealing with lot of shed dog hairs</li>
+                </ul>
+            </div>
+
+        </div>
+    </div> <br><br><br>
+    
+</body>
+</html>
