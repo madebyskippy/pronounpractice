@@ -5,6 +5,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript">  
         var isMyTurn = false;
+        $( document ).ready(function() {
+            isMyTurn=true;
+            finishTurn();
+        });
         function finishTurn(){
             if (isMyTurn){
                 console.log("turn finished");
@@ -41,7 +45,7 @@
             It's your turn! Talk to your conversation partners about the person below.
         </span>
         <span id="finishedturn">
-            Great, you finished your turn! Now pass it on.
+            Talk to your conversation partners about their prompt!
         </span>
     </div>
     
