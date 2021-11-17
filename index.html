@@ -10,23 +10,31 @@
         var currentPronounIndex = 0;
         var currentPrompt = 0;
         var isStaticPrompt = false;
+        var hasPromptAdvanced = false;
 
         var isMyTurn = false;
 
         $( document ).ready(function() {
             isMyTurn=true;
+            isStaticPrompt=true;
             finishTurn();
         });
 
         function finishTurn(){
             if (isMyTurn){
-                console.log("turn finished");
-                $("#myturnbutton").prop('disabled',false);
-                $("#finishedturnbutton").prop('disabled',true);
-                $("#myturn").hide();
-                $("#finishedturn").show();
-                $(".block").hide();
-                isMyTurn=false;
+                if (isStaticPrompt || hasPromptAdvanced){
+                    console.log("turn finished");
+                    $("#myturnbutton").prop('disabled',false);
+                    $("#finishedturnbutton").prop('disabled',true);
+                    $("#myturn").hide();
+                    $("#myturncontinued").hide();
+                    $("#finishedturn").show();
+                    $(".block").hide();
+                    isMyTurn=false;
+                }
+                if (!isStaticPrompt && !hasPromptAdvanced){
+                    continueTurn();
+                }
             }
         }
         function startTurn(){
@@ -35,15 +43,27 @@
                 $("#myturnbutton").prop('disabled',true);
                 $("#finishedturnbutton").prop('disabled',false);
                 $("#myturn").show();
+                $("#myturncontinued").hide();
                 $("#finishedturn").hide();
                 $(".block").show();
 
-                randomizePrompts();
+                hasPromptAdvanced = false;
+                isStaticPrompt = randomizePrompts();
                 randomizePronouns(isStaticPrompt);
                 randomizePicture();
 
                 isMyTurn=true;
             }
+        }
+        function continueTurn(){
+            $("#myturn").hide();
+            $("#myturncontinued").show();
+            $("#finishedturn").hide();
+            $(".block").show();
+
+            showSecondPartOfPrompt();
+            showNextPronouns();
+            hasPromptAdvanced = true;
         }
 
         function randomizePronouns(isStatic){
@@ -58,6 +78,11 @@
             $("#pronouns").text(pronouns);
         }
 
+        function showNextPronouns(){
+            var newPronouns = transitionPronouns[currentPronounIndex].now;
+            $("#pronouns").text(newPronouns);
+        }
+
         function randomizePicture(){
             //maybe make this so it's not as common to repeat a picture.
             //smarter random
@@ -66,10 +91,7 @@
         }
 
         function randomizePrompts(){
-            var currentPrompt = Math.floor(Math.random()*prompts.length);
-            if (prompts[currentPrompt].setting2.length>0){
-                isStaticPrompt=false;
-            }
+            currentPrompt = Math.floor(Math.random()*prompts.length);
 
             $("#setting").text(prompts[currentPrompt].setting1);
 
@@ -82,6 +104,8 @@
             list += "</ul>";
 
             $("#details").html(list);
+
+            return prompts[currentPrompt].setting2.length==0;
         }
 
         function showSecondPartOfPrompt(){            
@@ -109,6 +133,9 @@
     <div class="row" id="instructions">
         <span id="myturn">
             It's your turn! Talk to your conversation partners about the person below.
+        </span>
+        <span id="myturncontinued">
+            Oh wait, You're not finished--fast forward in time and see below for the updated prompt of the same person you were just talking about!
         </span>
         <span id="finishedturn">
             Talk to your conversation partners about their prompt!
