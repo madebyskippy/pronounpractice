@@ -26,6 +26,7 @@ details1:[
 ],
 setting2:"Your old friend has moved!", 
 details2:[
+	"Has new pronouns!",
 	"Found a nice studio apartment with huge windows",
 	"Trying to now find furniture on craigslist/kijiji",
 	"Trying to find good coffee shops"
@@ -38,6 +39,7 @@ details1:[
 ],
 setting2:"You saw a friend last month!", 
 details2:[
+	"Has new pronouns!",
 	"Started a new job",
 	"Was thrown into the deep end on a project right a way",
 	"Slowly figuring out who at the company to ask questions to",
@@ -50,6 +52,8 @@ details1:[
 ],
 setting2:"You saw your cousin last weekend!", 
 details2:[
+	"Has new pronouns!",
+	"Has started college",
 	"Has an annoying roommate",
 	"Joined an a capella group",
 	"Wasn't able to get into a popular class but likes the backup class's professor"
@@ -62,6 +66,7 @@ details1:[
 ],
 setting2:"You hung out with your friend's kid last week!", 
 details2:[
+	"Has new pronouns!",
 	"Had fun doing arts and crafts with you and drawing a picture together",
 	"Told you all about a new ipad app",
 	"Talked about trying a new food"
@@ -84,6 +89,7 @@ details1:[
 ],
 setting2:"You saw your relative last weekend!", 
 details2:[
+	"Has new pronouns!",
 	"Really enjoyed your favorite cafe!",
 	"Didn't have a strong reaction to the sightseeing",
 	"Thought your local grocery store was very charming",

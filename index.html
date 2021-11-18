@@ -47,40 +47,41 @@
 
         function finishTurn(){
             if (isMyTurn){
-                if (isStaticPrompt || hasPromptAdvanced){
-                    console.log("turn finished");
-                    $("#myturnbutton").prop('disabled',false);
-                    $("#finishedturnbutton").prop('disabled',true);
-                    $("#myturn").hide();
-                    $("#myturncontinued").hide();
-                    $("#finishedturn").show();
-                    $(".block").hide();
-                    isMyTurn=false;
-                }
-                if (!isStaticPrompt && !hasPromptAdvanced){
-                    continueTurn();
-                }
+                $("#myturnbutton").prop('disabled',false);
+                $("#secondpartbutton").prop('disabled',true);
+                $("#finishedturnbutton").prop('disabled',true);
+
+                $("#myturn").hide();
+                $("#myturncontinued").hide();
+                $("#finishedturn").show();
+                $(".block").hide();
+                isMyTurn=false;
             }
         }
         function startTurn(){
             if (!isMyTurn){
-                console.log("turn starting");
-                $("#myturnbutton").prop('disabled',true);
-                $("#finishedturnbutton").prop('disabled',false);
-                $("#myturn").show();
-                $("#myturncontinued").hide();
-                $("#finishedturn").hide();
-                $(".block").show();
-
                 hasPromptAdvanced = false;
                 isStaticPrompt = randomizePrompts();
                 randomizePronouns(isStaticPrompt);
                 randomizePicture();
 
+                $("#myturnbutton").prop('disabled',true);
+                $("#secondpartbutton").prop('disabled',isStaticPrompt);
+                $("#finishedturnbutton").prop('disabled',!isStaticPrompt);
+
+                $("#myturn").show();
+                $("#myturncontinued").hide();
+                $("#finishedturn").hide();
+                $(".block").show();
+
                 isMyTurn=true;
             }
         }
         function continueTurn(){
+            $("#myturnbutton").prop('disabled',true);
+            $("#secondpartbutton").prop('disabled',true);
+            $("#finishedturnbutton").prop('disabled',false);
+
             $("#myturn").hide();
             $("#myturncontinued").show();
             $("#finishedturn").hide();
@@ -153,18 +154,23 @@
     </script>  
 </head>
 <body>
-    <div class="row header">Pronoun Practice Prompts<br>
+    <div class="row header">Pronoun Practice Prompts
+        <br>
+    <span class="subtitle">
+        This is a tool designed to be used as part of a workshop.
+    </span>
     </div>
 
-    <button id="myturnbutton" onclick="startTurn()">It's my turn!</button> &nbsp;
-    <button id="finishedturnbutton" onclick="finishTurn()">I'm finished!</button>
+    <button id="myturnbutton" onclick="startTurn()">I have someone to talk about!</button> &nbsp;
+    <button id="secondpartbutton" onclick="continueTurn()">We met up!</button>&nbsp;
+    <button id="finishedturnbutton" onclick="finishTurn()">I'm done talking!</button>
 
     <div class="row" id="instructions">
         <span id="myturn">
             Talk to your conversation partners about the person below.
         </span>
         <span id="myturncontinued">
-            Oh wait, You're not finished--fast forward in time and see below for the updated prompt of the same person you were just talking about!
+            Oh look, check out the updated information you got since you two met up!
         </span>
         <span id="finishedturn">
             Talk to your conversation partners about their prompt!
@@ -173,8 +179,8 @@
     
     <div class="row">
         <div class="block img">
-            <img id="picture" src="">
             <div class="imginfo" id="pronouns">they/them</div>
+            <img id="picture" src="">
         </div>
         <div class="block info">
             <div class="infochunk" id="setting">
@@ -188,7 +194,7 @@
             </div>
 
         </div>
-    </div> <br><br><br>
+    </div>
     
 </body>
 </html>
