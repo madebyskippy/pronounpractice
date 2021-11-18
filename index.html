@@ -9,7 +9,10 @@
         var numPictures = 28;
         var pictureIndecies;
         var currentPicture = 0;
-        var currentPronounIndex = 0;
+
+        var currentStaticPronounIndex = -1;
+        var currentTransitionPronounIndex = -1;
+
         var currentPrompt = 0;
         var isStaticPrompt = false;
         var hasPromptAdvanced = false;
@@ -91,17 +94,17 @@
         function randomizePronouns(isStatic){
             var pronouns = "";
             if (isStatic){
-                currentPronounIndex = Math.floor(Math.random() * staticPronouns.length);
-                pronouns= staticPronouns[currentPronounIndex];
+                currentStaticPronounIndex = (currentStaticPronounIndex+1)%staticPronouns.length;
+                pronouns= staticPronouns[currentStaticPronounIndex];
             }else{
-                currentPronounIndex=Math.floor(Math.random() * transitionPronouns.length);
-                pronouns= transitionPronouns[currentPronounIndex].then;
+                currentTransitionPronounIndex=(currentTransitionPronounIndex+1)%transitionPronouns.length;
+                pronouns= transitionPronouns[currentTransitionPronounIndex].then;
             }
             $("#pronouns").text(pronouns);
         }
 
         function showNextPronouns(){
-            var newPronouns = transitionPronouns[currentPronounIndex].now;
+            var newPronouns = transitionPronouns[currentTransitionPronounIndex].now;
             $("#pronouns").text(newPronouns);
         }
 
