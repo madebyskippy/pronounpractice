@@ -63,7 +63,7 @@ details1:[
 setting2:"You hung out with your friend's kid last week!", 
 details2:[
 	"Had fun doing arts and crafts with you and drawing a picture together",
-	"Told you all about the new video game and what they have to do to earn screen time",
+	"Told you all about a new ipad app",
 	"Talked about trying a new food"
 ]},
 {setting1:"You met up with a friend on the weekend!", 
