@@ -28,6 +28,10 @@ a:active{
     color:#aaa;
 }
 
+button{
+    margin: 2px;
+}
+
 div.header{
     text-align: center;
     font-size: 19pt;

@@ -4,7 +4,7 @@ details1:[
 	"Fostering a dog for the first time",
 	"Had a childhood incident with a mean dog",
 	"Likes to take the dog to the beach",
-	"Bad at training the dog--doesn't know how to get the dog to stop barking at neighbors",
+	"Having trouble training the dog--doesn't know how to get the dog to stop barking at neighbors",
 	"Frustrated that the dog is too active",
 	"Dealing with lot of shed dog hairs"],
 setting2:"", 
@@ -21,14 +21,14 @@ details2:""},
 {setting1:"You're going to help an old friend pack!", 
 details1:[
 	"Moving soon",
-	"Trying and failing to sell stuff on craigslist/kijiji",
+	"Trying and failing to sell stuff online",
 	"Trying to get an apartment with windows in the bedroom"
 ],
 setting2:"Your old friend has moved!", 
 details2:[
 	"Has new pronouns!",
 	"Found a nice studio apartment with huge windows",
-	"Trying to now find furniture on craigslist/kijiji",
+	"Trying to now find furniture online",
 	"Trying to find good coffee shops"
 ],},
 {setting1:"You're visiting a friend next month!", 
@@ -37,7 +37,7 @@ details1:[
 	"Quit before the last company went under, dealing with bad morale",
 	"Feels a little underqualified for the new position"
 ],
-setting2:"You saw a friend last month!", 
+setting2:"You saw your friend last month!", 
 details2:[
 	"Has new pronouns!",
 	"Started a new job",
@@ -45,7 +45,7 @@ details2:[
 	"Slowly figuring out who at the company to ask questions to",
 	"Made a friend in a different department"
 ]},
-{setting1:"You're meeting tomorrow and your cousin needs advice!", 
+{setting1:"You're meeting soon and your cousin needs advice!", 
 details1:[
 	"Got into one specialized college and one general college and can't choose",
 	"Can't decide on the big city college with no campus or the isolated one"
