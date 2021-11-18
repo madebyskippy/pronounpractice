@@ -13,7 +13,7 @@
         var currentStaticPronounIndex = -1;
         var currentTransitionPronounIndex = -1;
 
-        var currentPrompt = 0;
+        var currentPrompt = -1;
         var isStaticPrompt = false;
         var hasPromptAdvanced = false;
 
@@ -117,7 +117,10 @@
         }
 
         function randomizePrompts(){
-            currentPrompt = Math.floor(Math.random()*prompts.length);
+            currentPrompt = (currentPrompt+1)%prompts.length;
+            if (currentPrompt==0){
+                shuffleArray(prompts);
+            }
 
             $("#setting").text(prompts[currentPrompt].setting1);
 
